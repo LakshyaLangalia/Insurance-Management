@@ -1,0 +1,56 @@
+/* CSS file that includes all the different styles used in the HTML */
+
+/* Global Styles */
+body {
+    background-color: #f8f8f8; /* Creamy background */
+    font-family: 'Titillium Web', sans-serif; /* Default font for body */
+    color: #333;
+}
+
+/* Header Section */
+header {
+    background-color: #fff; /* White background */
+    border-bottom: 2px solid #0066cc; /* Royal blue accent */
+}
+
+header h1 {
+    font-family: 'Roboto Slab', serif; /* Heading font */
+    font-size: 2.5rem;
+    color: #0066cc; /* Royal blue */
+}
+
+nav a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+nav a:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+/* Logo Styling */
+.logo {
+    max-width: 100%;
+}
+
+/* Button Styles */
+.btn-outline-primary {
+    border-color: #0066cc;
+    color: #0066cc;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0066cc;
+    color: white;
+}
+
+/* Footer Section */
+footer {
+    background-color: #fff;
+    color: #333;
+}
+
+footer p {
+    margin-bottom: 0;
+}

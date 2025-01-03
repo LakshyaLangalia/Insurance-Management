@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Vehicle</h2>
+<form method="POST">
+    <label for="vehicle_id">Vehicle ID:</label>
+    <input type="text" id="vehicle_id" name="vehicle_id" required><br>
+
+    <label for="customer_id">Customer ID:</label>
+    <input type="text" id="customer_id" name="customer_id" required><br>
+
+    <label for="registration_number">Registration Number:</label>
+    <input type="text" id="registration_number" name="registration_number" required><br>
+
+    <label for="value">Value:</label>
+    <input type="number" id="value" name="value"><br>
+
+    <label for="type">Vehicle Type:</label>
+    <input type="text" id="type" name="type"><br>
+
+    <label for="make">Make:</label>
+    <input type="text" id="make" name="make"><br>
+
+    <label for="model">Model:</label>
+    <input type="text" id="model" name="model"><br>
+
+    <label for="engine_number">Engine Number:</label>
+    <input type="text" id="engine_number" name="engine_number"><br>
+
+    <label for="chassis_number">Chassis Number:</label>
+    <input type="text" id="chassis_number" name="chassis_number"><br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

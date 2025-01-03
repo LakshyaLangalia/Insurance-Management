@@ -1,0 +1,31 @@
+<!-- Extends the base.html template to include a form which allows the user to input
+     the necessary data for inputting a record manually, in this case an application
+     
+     Includes a button which allows them to submit.
+
+     Same format for all  add_... templates.
+        -->
+
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Application</h2>
+<form method="POST">
+    <label for="application_id">Application ID:</label>
+    <input type="text" id="application_id" name="application_id" required><br>
+
+    <label for="customer_id">Customer ID:</label>
+    <input type="text" id="customer_id" name="customer_id" required><br>
+
+    <label for="vehicle_id">Vehicle ID:</label>
+    <input type="text" id="vehicle_id" name="vehicle_id" required><br>
+
+    <label for="status">Status:</label>
+    <input type="text" id="status" name="status" required><br>
+
+    <label for="coverage_description">Coverage Description:</label>
+    <input type="text" id="coverage_description" name="coverage_description" required><br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

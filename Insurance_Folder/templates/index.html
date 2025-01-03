@@ -1,0 +1,28 @@
+<!-- home screen that shows the users name and information when they log in, they
+ can then navigate from there. -->
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- grabs the information of the current user and displays it on the screen, along with 
+     their position and staff ID, using strong to bold the text on the screen-->
+    <h2 class="text-primary">Welcome, <strong>{{ current_user.first_name }} {{ current_user.last_name }}</strong>!</h2>
+    <p>You are logged in as: <strong>{{ current_user.email }}</strong>.</p>
+    <p>Select an action from the navigation bar to get started!</p>
+
+    <div class="mt-4">
+        <h4>Your Account Details:</h4>
+        <ul>
+            <li><strong>Staff ID:</strong> {{ current_user.id }}</li>
+            <li><strong>Position:</strong> {{ current_user.position }}</li>
+        </ul>
+    </div>
+
+    <!-- shortcuts -->
+    <div class="mt-5">
+        <h4>Quick Actions:</h4>
+        <a href="/upload_csv" class="btn btn-primary mx-2">Upload CSV</a>
+        <a href="/add_customer" class="btn btn-secondary mx-2">Add Customer</a>
+    </div>
+</div>
+{% endblock %}

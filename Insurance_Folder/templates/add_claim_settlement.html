@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Claim Settlement</h2>
+<form method="POST">
+    <label for="settlement_id">Settlement ID:</label>
+    <input type="text" id="settlement_id" name="settlement_id" required><br>
+
+    <label for="claim_id">Claim ID:</label>
+    <input type="text" id="claim_id" name="claim_id" required><br>
+
+    <label for="amount_paid">Amount Paid:</label>
+    <input type="number" id="amount_paid" name="amount_paid" required><br>
+
+    <label for="settlement_date">Settlement Date:</label>
+    <input type="date" id="settlement_date" name="settlement_date" required><br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

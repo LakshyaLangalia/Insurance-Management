@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Risk Assessment</h2>
+<form method="POST">
+    <label for="assessment_id">Assessment ID:</label>
+    <input type="text" id="assessment_id" name="assessment_id" required><br>
+
+    <label for="customer_id">Customer ID:</label>
+    <input type="text" id="customer_id" name="customer_id" required><br>
+
+    <label for="age">Age:</label>
+    <input type="number" id="age" name="age" required><br>
+
+    <label for="health_status">Health Status:</label>
+    <input type="text" id="health_status" name="health_status" required><br>
+
+    <label for="risk_level">Risk Level:</label>
+    <input type="text" id="risk_level" name="risk_level" required><br>
+
+    <label for="premium_multiplier">Premium Multiplier:</label>
+    <input type="number" step="0.01" id="premium_multiplier" name="premium_multiplier" required><br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

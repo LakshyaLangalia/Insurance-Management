@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+
+<!-- Defines the charset, as well as adjusting the UI based on the screen width-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays the title on the tab-->
+    <title>Langalia Insurance Uploading Wizard</title>
+
+    <!-- Links to Google Fonts(preconnects to improve loading times)-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100..900&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
+    <!-- importing bootstrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- incorporating our custom css file as well -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+</head>
+
+<body>
+    <!-- header section -->
+     <!-- uses the bootstrap class bg-light with a padding of 4-->
+    <header class="bg-light py-4">
+        <div class="container d-flex align-items-center justify-content-between">
+            <!-- Wrap the logo image with an anchor tag -->
+
+            <!-- makes the logo a redirect to the homepage-->
+            <a href="/">
+                <img src="{{ url_for('static', filename='Langalia_Insurance_nb.png') }}" alt="Logo" class="logo" width="110">
+            </a>
+
+            <!-- adds the main text "UPLOADING WIZARD"-->
+            <h1 class="text-primary">UPLOADING WIZARD</h1>
+            <!-- creates the navbar-->
+            <nav class="d-flex">
+                <a href="/" class="btn btn-outline-primary mx-2">Home</a>
+
+            <!-- creates a dropdown which we can use to insert records -->
+                <div class="dropdown mx-2">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true">
+                        Insert Records
+                    </button>
+                    <!-- redirect to the page to insert each record
+                     calls a javascript function which is defined at the bottom-->
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#" data-target="/add_customer" onclick="redirectToPage('/add_customer')">Customer</a>
+                        <a class="dropdown-item" href="#" data-target="/add_incident" onclick="redirectToPage('/add_incident')">Incident</a>
+                        <a class="dropdown-item" href="#" data-target="/add_incident_report" onclick="redirectToPage('/add_incident_report')">Incident Report</a>
+                        <a class="dropdown-item" href="#" data-target="/add_company" onclick="redirectToPage('/add_company')">Company</a>
+                        <a class="dropdown-item" href="#" data-target="/add_department" onclick="redirectToPage('/add_department')">Department</a>
+                        <a class="dropdown-item" href="#" data-target="/add_vehicle" onclick="redirectToPage('/add_vehicle')">Vehicle</a>
+                        <a class="dropdown-item" href="#" data-target="/add_vehicle_service" onclick="redirectToPage('/add_vehicle_service')">Vehicle Service</a>
+                        <a class="dropdown-item" href="#" data-target="/add_application" onclick="redirectToPage('/add_application')">Application</a>                       
+                        <a class="dropdown-item" href="#" data-target="/add_policy" onclick="redirectToPage('/add_policy')">Policy</a>
+                        <a class="dropdown-item" href="#" data-target="/add_premium_payment" onclick="redirectToPage('/add_premium_payment')">Premium Payment</a>
+                        <a class="dropdown-item" href="#" data-target="/add_claim" onclick="redirectToPage('/add_claim')">Claim</a>
+                        <a class="dropdown-item" href="#" data-target="/add_claim_settlement" onclick="redirectToPage('/add_claim_settlement')">Claim Settlement</a>
+                        <a class="dropdown-item" href="#" data-target="/add_risk_assessment" onclick="redirectToPage('/add_risk_assessment')">Risk Assessment</a>
+                        <a class="dropdown-item" href="#" data-target="/add_revenue_expenses" onclick="redirectToPage('/add_revenue_expenses')">Revenue & Expenses</a>
+                        <a class="dropdown-item" href="#" data-target="/add_customer_segmentation" onclick="redirectToPage('/add_customer_segmentation')">Customer Segmentation</a>
+                        <a class="dropdown-item" href="#" data-target="/add_reinsurance_info" onclick="redirectToPage('/add_reinsurance_info')">Reinsurance Info</a>
+                        <a class="dropdown-item" href="#" data-target="/add_feedback_info" onclick="redirectToPage('/add_feedback_info')">Feedback Info</a>
+                        <a class="dropdown-item" href="#" data-target="/add_staff" onclick="redirectToPage('/add_staff')">Staff</a>
+                    </div>
+                </div>
+
+                <!-- redirects to the upload csv page-->
+                <a href="/upload_csv" class="btn btn-outline-primary mx-2">Upload CSV</a> 
+                
+                <!-- using Jinja to insert Python code, in this case
+                 to only show the logout button if the user is authenticated/logged in, else 
+                 go to the login page.-->
+                {% if current_user.is_authenticated %}
+                <a href="/logout" class="btn btn-outline-danger mx-2">Logout</a>
+                {% else %}
+                <a href="/login" class="btn btn-outline-primary mx-2">Login</a>
+                {% endif %}
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- main content is inserted here-->
+    <main class="container py-5">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- defines the footer -->
+    <footer class="bg-light text-center py-3">
+        <p>&copy; 2025 Langalia Insurance Co. | All Rights Reserved</p>
+    </footer>
+
+    <!-- necessary for bootstrap to function-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to handle redirection -->
+    <script>
+        function redirectToPage(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+
+</html>

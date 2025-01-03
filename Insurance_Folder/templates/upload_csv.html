@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main class="container py-5">
+        <h3>Select Table and Upload CSV</h3>
+        <form action="/upload_csv" method="POST" enctype="multipart/form-data">
+            <!-- dropdown for selecting the table -->
+            <div class="form-group">
+                <label for="table_name">Select Table</label>
+                <select class="form-control" id="table_name" name="table_name">
+                    <option value="Customer">Customer</option>
+                    <option value="Incident">Incident</option>
+                    <option value="Incident_Report">Incident Report</option>
+                    <option value="Company">Company</option>
+                    <option value="Department">Department</option>
+                    <option value="Vehicle">Vehicle</option>
+                    <option value="Vehicle_Service">Vehicle Service</option>
+                    <option value="Application">Application</option>
+                    <option value="Policy">Policy</option>
+                    <option value="Premium_Payment">Premium Payment</option>
+                    <option value="Claim">Claim</option>
+                    <option value="Claim_Settlement">Claim Settlement</option>
+                    <option value="Risk_Assessment">Risk Assessment</option>
+                    <option value="Revenue_Expenses">Revenue Expenses</option>
+                    <option value="Customer_Segmentation">Customer Segmentation</option>
+                    <option value="Reinsurance_Info">Reinsurance Info</option>
+                    <option value="Feedback_Info">Feedback Info</option>
+                    <option value="Staff">Staff</option>
+                </select>
+            </div>
+
+            <!-- allows the user to upload a file -->
+            <div class="form-group">
+                <label for="csv_file">Select CSV File</label>
+                <input type="file" class="form-control-file" id="csv_file" name="csv_file" accept=".csv" required>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-primary">Upload</button>
+        </form>
+    </main>
+{% endblock %}

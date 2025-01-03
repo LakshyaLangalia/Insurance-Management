@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Incident Report</h2>
+<form method="POST">
+    <label for="report_id">Report ID:</label>
+    <input type="text" id="report_id" name="report_id" required><br>
+
+    <label for="incident_id">Incident ID:</label>
+    <input type="text" id="incident_id" name="incident_id" required><br>
+
+    <label for="customer_id">Customer ID:</label>
+    <input type="text" id="customer_id" name="customer_id" required><br>
+
+    <label for="inspector_name">Inspector Name:</label>
+    <input type="text" id="inspector_name" name="inspector_name"><br>
+
+    <label for="estimated_cost">Estimated Cost:</label>
+    <input type="number" step="0.01" id="estimated_cost" name="estimated_cost"><br>
+
+    <label for="description">Description:</label>
+    <textarea id="description" name="description"></textarea><br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

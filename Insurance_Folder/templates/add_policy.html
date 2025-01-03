@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>Add Policy</h2>
+<form method="POST">
+    <label for="policy_number">Policy Number:</label>
+    <input type="text" id="policy_number" name="policy_number" required><br>
+
+    <label for="application_id">Application ID:</label>
+    <input type="text" id="application_id" name="application_id" required><br>
+
+    <label for="start_date">Start Date:</label>
+    <input type="date" id="start_date" name="start_date" required><br>
+
+    <label for="expiry_date">Expiry Date:</label>
+    <input type="date" id="expiry_date" name="expiry_date" required><br>
+
+    <label for="terms">Terms:</label>
+    <input type="text" id="terms" name="terms"><br>
+
+    <button type="submit">Submit</button>
+</form>
+{% endblock %}

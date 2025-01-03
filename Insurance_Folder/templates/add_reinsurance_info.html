@@ -1,0 +1,102 @@
+
+@app.route("/add_reinsurance_info", methods=["GET", "POST"])
+def add_reinsurance_info():
+    if request.method == "POST":
+        reinsurance_id = request.form["reinsurance_id"]
+        policy_number = request.form["policy_number"]
+        reinsurer_name = request.form["reinsurer_name"]
+        reinsurance_type = request.form["reinsurance_type"]
+        coverage_limit = request.form["coverage_limit"]
+        deductible = request.form["deductible"]
+
+        if all([
+            validate_non_null("Reinsurance ID", reinsurance_id, max_length=10),
+            validate_non_null("Policy Number", policy_number, max_length=20),
+            validate_non_null("Reinsurer Name", reinsurer_name, max_length=100),
+            validate_non_null("Reinsurance Type", reinsurance_type, max_length=50),
+            validate_non_null("Coverage Limit", coverage_limit),
+            validate_non_null("Deductible", deductible)
+        ]):
+
+            try:
+                query = """
+                    INSERT INTO Reinsurance_Info (Reinsurance_ID, Policy_Number, Reinsurer_Name, Reinsurance_Type, Coverage_Limit, Deductible)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """
+                cursor.execute(query, reinsurance_id, policy_number, reinsurer_name, reinsurance_type, coverage_limit, deductible)
+                connection.commit()
+                flash("Reinsurance Information added successfully.", "success")
+                return redirect(url_for("index"))
+            except pyodbc.IntegrityError as e:
+                flash(f"Error inserting Reinsurance Info: {e}", "error")
+
+    return render_template("form.html")
+
+
+@app.route("/add_feedback_info", methods=["GET", "POST"])
+def add_feedback_info():
+    if request.method == "POST":
+        feedback_id = request.form["feedback_id"]
+        customer_id = request.form["customer_id"]
+        feedback_type = request.form["feedback_type"]
+        rating = request.form["rating"]
+        feedback_text = request.form["feedback_text"]
+        feedback_date = request.form["feedback_date"]
+
+        if all([
+            validate_non_null("Feedback ID", feedback_id, max_length=10),
+            validate_non_null("Customer ID", customer_id, max_length=10),
+            validate_non_null("Feedback Type", feedback_type, max_length=50),
+            validate_non_null("Rating", rating),
+            validate_non_null("Feedback Text", feedback_text),
+            validate_non_null("Feedback Date", feedback_date)
+        ]):
+            try:
+                query = """
+                    INSERT INTO Feedback_Info (Feedback_ID, Customer_ID, Feedback_Type, Rating, Feedback_Text, Feedback_Date)
+                    VALUES (?, ?, ?, ?, ?, ?)
+                """
+                cursor.execute(query, feedback_id, customer_id, feedback_type, rating, feedback_text, feedback_date)
+                connection.commit()
+                flash("Feedback Information added successfully.", "success")
+                return redirect(url_for("index"))
+            except pyodbc.IntegrityError as e:
+                flash(f"Error inserting Feedback Info: {e}", "error")
+
+    return render_template("form.html")
+
+@app.route("/add_staff", methods=["GET", "POST"])
+def add_staff():
+    if request.method == "POST":
+        staff_id = request.form["staff_id"]
+        company_id = request.form["company_id"]
+        first_name = request.form["first_name"]
+        last_name = request.form["last_name"]
+        address = request.form["address"]
+        position = request.form["position"]
+        contact_number = request.form["contact_number"]
+        email = request.form["email"]
+
+        if all([
+            validate_non_null("Staff ID", staff_id, max_length=10),
+            validate_non_null("Company ID", company_id, max_length=10),
+            validate_non_null("First Name", first_name, max_length=50),
+            validate_non_null("Last Name", last_name, max_length=50),
+            validate_non_null("Address", address, max_length=50),
+            validate_non_null("Position", position, max_length=50),
+            validate_non_null("Contact Number", contact_number, max_length=15),
+            validate_non_null("Email", email, max_length=100)
+        ]):
+            try:
+                query = """
+                    INSERT INTO Staff (Staff_ID, Company_ID, First_Name, Last_Name, Address, Position, Contact_Number, Email)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+                """
+                cursor.execute(query, staff_id, company_id, first_name, last_name, address, position, contact_number, email)
+                connection.commit()
+                flash("Staff added successfully.", "success")
+                return redirect(url_for("index"))
+            except pyodbc.IntegrityError as e:
+                flash(f"Error inserting Staff: {e}", "error")
+
+    return render_template("form.html")
